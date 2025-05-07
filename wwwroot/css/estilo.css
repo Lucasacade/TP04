@@ -1,0 +1,35 @@
+body{
+  background-color: rgb(60, 143, 252);
+}
+header {
+  text-align: left;
+}
+article {
+  margin: 1.5%;
+  padding: 10px;
+  border: 1px solid black;
+  float: left;
+  width: 15%;
+}
+footer{
+  clear: both;
+}
+html {
+  font-size: 14px;
+  min-height: 100%;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+body {
+  margin: 10px;
+  padding: 10px;
+}
+footer {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgb(107, 178, 248);
+  border-top: 1px solid #000000;
+}
