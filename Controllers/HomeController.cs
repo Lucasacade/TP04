@@ -15,27 +15,19 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return View("Index");
     }
     public IActionResult ElegirPalabra()
     {
-        ViewBag.palabra = Palabras.ElegirPalabra();
         return View("Ahorcado");
     }
-    public IActionResult ArriesgarLetra(char Letra, string palabra)
+    public IActionResult ArriesgarLetra(string letra)
     {
-        bool adivino = false;
-        for(int i = 0; i > palabra.Length - 1; i++)
-        {
-            if (palabra[i] == Letra)
-            {
-              adivino = true;
-            }
-        }
-        return View();
+        Palabras.ArriesgarLetra(letra[0]);
+        return View("Ahorcado");
     }
     public IActionResult ArriesgarPalabra(string Palabra)
     {
-        return View();
+        return View("Ahorcado");
     }
 }

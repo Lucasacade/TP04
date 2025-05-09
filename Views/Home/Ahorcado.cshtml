@@ -2,12 +2,17 @@
     ViewData["Title"] = "HomeAhorcado - Ahorcado";
 }
 <body>
-<form action='@Url.Action("ArriesgarLetra")'>
-    <input type="text" name="Letra"/>
+<header>
+<p> Ahorcado </p> <p><a href = '@Url.Action("Index", "Home")'> Home </a> </p>
+</header>
+    <h2>PALABRA: </h2>
+    <form action='@Url.Action("ArriesgarLetra")'>
+    <input type="char" name="Letra"/>
     <input type="submit"/>
 </form>
 <form action='@Url.Action("ArriesgarPalabra")'>
     <input type="text" name="Palabra"/>
     <input type="submit"/>
 </form>
+<footer>2025 - Ahorcado - Federico Ajami, Lucas Dorin y Tobías Nul - FeLuTo</footer>
 </body>

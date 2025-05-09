@@ -1,8 +1,15 @@
 class Palabras
 {
     public static List<string> palabras {get; set;}
+    public static string palabraMostrar{get; set;}
+    public static string palabraAdivinar{get; set;}
+
+
+
     public static void CargarPalabras()
     {
+        
+        List<string> palabras = new List<string>();
 palabras.Add("abeja");
 palabras.Add("abismo");
 palabras.Add("acuario");
@@ -86,7 +93,7 @@ palabras.Add("hielo");
 palabras.Add("hormiga");
 palabras.Add("hoja");
 palabras.Add("iglesia");
-palabras.Add("imán");
+palabras.Add("iman");
 palabras.Add("invierno");
 palabras.Add("isla");
 palabras.Add("jirafa");
@@ -102,20 +109,27 @@ palabras.Add("lluvia");
 palabras.Add("luna");
 palabras.Add("mano");
 palabras.Add("mariposa");
-palabras.Add("melón");
+palabras.Add("melon");
 palabras.Add("montaña");
 palabras.Add("muñeca");
 palabras.Add("nube");
 palabras.Add("nuez");
-palabras.Add("número");
+palabras.Add("numero");
 palabras.Add("nunca");
-    }
-    public static string ElegirPalabra()
-    {
-        CargarPalabras();
+
         int num;
         Random r = new Random();
-        num = r.Next(0, palabras.Count);
-        return palabras[num];
+        num = r.Next(0, palabras.Count - 1);
+        palabraAdivinar = palabras[num];
+    }
+    public static void ArriesgarLetra(char letraArriesgada)
+    {
+        for (int i = 0; i < palabraAdivinar.Length; i++)
+        {
+            if (palabraAdivinar[i] == letraArriesgada)
+            {
+
+            }
+        }
     }
 }

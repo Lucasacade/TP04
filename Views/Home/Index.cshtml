@@ -3,7 +3,7 @@
 }
 <body>
 <header>
-<p> Ahorcado </p> <p><a href = "Index.cshtml"> Home </a> </p>
+<p> Ahorcado </p> <p><a href = '@Url.Action("Index", "Home")'> Home </a> </p>
 </header>
 <main>
 <section>
@@ -14,7 +14,7 @@
 <img src = "" alt = "Foto de pasos del Ahorcado" >
 <h3>En el siguiente intento fallido, la persona se ahorcará y perderás el juego.</h3>
 <div>
-<p>Para empezar a jugar, presione <a href = "Ahorcado.cshtml"> Acá </a> </p>
+<p>Para empezar a jugar, presione <a href = '@Url.Action("ElegirPalabra", "Home")'> Acá </a> </p>
 </div>
 </section>
 </main>
