@@ -23,7 +23,7 @@ public class HomeController : Controller
     }
     public IActionResult ArriesgarLetra(string letra)
     {
-        Palabras.ArriesgarLetra(letra[0]);
+        Juego.ArriesgarLetra(letra[0]);
         return View("Ahorcado");
     }
     public IActionResult ArriesgarPalabra(string Palabra)
