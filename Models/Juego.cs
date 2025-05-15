@@ -7,6 +7,7 @@ class Juego
     public static int intentos{get; set;}
     public static bool finalizado{get; set;}
     public static bool ganaste{get; set;}
+    public static bool perdiste{get; set;}
 
     public static void CargarPalabras()
     {
@@ -117,8 +118,9 @@ palabras[99] = "FUTBOL";
         int num;
         Random r = new Random();
         num = r.Next(0, 99);
+        palabraMostrar = new List<char>();
         palabraAdivinar = palabras[num];
-        for(int i = 0; i < palabraAdivinar.Count; i++)
+        for(int i = 0; i < 100; i++)
         {
            palabraMostrar.Add('_');
         }
@@ -126,6 +128,7 @@ palabras[99] = "FUTBOL";
         intentos = 0;
         finalizado = false;
         ganaste = false;
+        perdiste = false;
     }
     public static void ArriesgarLetra(char letraArriesgada)
     {
@@ -145,10 +148,14 @@ palabras[99] = "FUTBOL";
         {
             intentos++;
         }
-        if(!new string(palabraMostrar).Contains('_'))
+        if(!palabraMostrar.Contains('_'))
         {
             finalizado = true;
             ganaste = true;
+        }
+        if(intentos > 6)
+        {
+            perdiste = true; 
         }
     }
 }

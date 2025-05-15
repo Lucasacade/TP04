@@ -19,6 +19,11 @@ public class HomeController : Controller
     }
     public IActionResult ElegirPalabra()
     {
+        Juego.CargarPalabras();
+        ViewBag.palabraMostrar = Juego.palabraMostrar;
+        ViewBag.letrasUsadas = Juego.letrasUsadas;
+        ViewBag.intentos = Juego.intentos;
+        ViewBag.finalizado = Juego.finalizado;
         return View("Ahorcado");
     }
     public IActionResult ArriesgarLetra(string letra)
