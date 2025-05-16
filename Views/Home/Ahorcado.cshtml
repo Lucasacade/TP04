@@ -1,65 +1,36 @@
 @{
-    ViewData["Title"] = "HomeAhorcado - Ahorcado";
+    ViewData["Title"] = "Ahorcado";
 }
 <body>
 <header>
 <p> Ahorcado </p> <p><a href = '@Url.Action("Index", "Home")'> Home </a> </p>
 </header>
-@while (@ViewBag.intentos <= 6 || @ViewBag.finalizado)
-{
-    <h2>PALABRA: </h2>
-    <form action='@Url.Action("ArriesgarLetra", "Ahorcado")'>
-    <input type="char" name="Letra"/>
-    <input type="submit"/> 
+
+    <h2>PALABRA: @ViewBag.palabraMostrar</h2>
+    <form action='@Url.Action("ArriesgarLetra", "Home")'>
+    <label for="letraArriesgada">Arriesgar Letra</label><br>
+    <input type="char" name="letraArriesgada" maxlength="1"/>
+    <input type="submit" value="Enviar letra"/> 
     <p>Letras Utilizadas: @ViewBag.letrasUsadas</p>
-    @switch (@ViewBag.intentos)
-    {
-       case 0:
-       <img src = "\img\INTENTOS\INTENTOS 0.png" alt = "Foto de pasos del Ahorcado (Vacío)" >
-       break;
-       case 1:
-       <img src = "\img\INTENTOS\INTENTOS 1.png" alt = "Foto de pasos del Ahorcado (Cabeza)" >
-       break;
-       case 2:
-       <img src = "\img\INTENTOS\INTENTOS 2.png" alt = "Foto de pasos del Ahorcado (Cabeza y Cuerpo)" >
-       break;
-       case 3:
-       <img src = "\img\INTENTOS\INTENTOS 3.png" alt = "Foto de pasos del Ahorcado" >
-       break;
-       case 4:
-       <img src = "\img\INTENTOS\INTENTOS 4.png" alt = "Foto de pasos del Ahorcado" >
-       break;
-       case 5:
-       <img src = "\img\INTENTOS\INTENTOS 5.png" alt = "Foto de pasos del Ahorcado" >
-       break;
-       case 6:
-       <img src = "\img\INTENTOS\INTENTOS 6.png" alt = "Foto de pasos del Ahorcado (Fin)" >
-       break;
-    }
+    <img src="\img\INTENTOS\INTENTOS 0" alt= "Foto de pasos de ahorcado">
+
+    <br> <br>
     </form>
-<form action='@Url.Action("ArriesgarPalabra", "Ahorcado")'>
-    <input type="text" name="Palabra"/>
-    <input type="submit"/>
+    <form action='@Url.Action("ArriesgarPalabra", "Home")'>
+    <label for="palabraArriesgada">Arriesgar Palabra</label><br>
+    <input type="text" name="palabraArriesgada" maxlength="ViewBag.cantLetrasPalabra"/>
+    <input type="submit" value="Enviar palabra"/>
 </form>
-}
-@if (@ViewBag.intentos >= 6)
+
+@if (@ViewBag.intentos == 6)
 {
     <p>Te quedaste sin intentos, estás obligado a arriesgar</p>
-    <form action='@Url.Action("ArriesgarPalabra", "Ahorcado")'/>
-    <input type="text" name="Palabra"/>
-    <input type="submit"/>
-    @if (@ViewBag.ganaste)
-    {
-        <p>¡Ganaste!</p>;
-    }
-    else
-    {
-        <p>Error, la respuesta era @ViewBag.palabraMostrar</p>;
-    }
+    <form action='@Url.Action("ArriesgarPalabra", "Home")'>
+    <label for="palabraArriesgada">Arriesgar Palabra</label><br>
+    <input type="text" name="palabraArriesgada" maxlength="ViewBag.cantLetrasPalabra"/>
+    <input type="submit" value="Enviar palabra"/>
+</form>
 }
-else
-{
-  <p>Enhorabuena, has adivinado</p>
-}
+
 <footer>2025 - Ahorcado - Federico Ajami, Lucas Dorin y Tobías Nul - FeLuTo</footer>
 </body>

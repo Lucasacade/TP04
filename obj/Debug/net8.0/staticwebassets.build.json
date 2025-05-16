@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cns/MLynzk6LM2XAhDQD1bDp5EPKVIukVemAhWRNRxE=",
+  "Hash": "41J1j36oEN3jkgzPgHs6520iH0BYRiVp/TDr02U9Jp8=",
   "Source": "TP04",
   "BasePath": "_content/TP04",
   "Mode": "Default",
@@ -205,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\PASOSAHORCADO.webp"
+    },
+    {
+      "Identity": "Z:\\4 AÑO 2025\\PROGRAMACION\\TP04\\TP04\\wwwroot\\img\\Thumbs.db",
+      "SourceId": "TP04",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\4 AÑO 2025\\PROGRAMACION\\TP04\\TP04\\wwwroot\\",
+      "BasePath": "_content/TP04",
+      "RelativePath": "img/Thumbs.db",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Thumbs.db"
     },
     {
       "Identity": "Z:\\4 AÑO 2025\\PROGRAMACION\\TP04\\TP04\\wwwroot\\js\\site.js",

@@ -15,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View("Index");
+        return View();
     }
     public IActionResult ElegirPalabra()
     {
@@ -26,13 +26,41 @@ public class HomeController : Controller
         ViewBag.finalizado = Juego.finalizado;
         return View("Ahorcado");
     }
-    public IActionResult ArriesgarLetra(string letra)
+    public IActionResult ArriesgarLetra(char letra)
     {
-        Juego.ArriesgarLetra(letra[0]);
+        ViewBag.cantLetrasPalabra = Juego.palabraAdivinar.Length;
+        Juego.ArriesgarLetra(letra, false);
+        if(Juego.ganaste)
+        {
+            return RedirectToAction("Gano");
+        }
+        else if(Juego.perdiste)
+        {
+            return RedirectToAction("Perdio");
+        }
         return View("Ahorcado");
     }
     public IActionResult ArriesgarPalabra(string Palabra)
     {
+        int i = 0;
+        do
+        {
+        Juego.ArriesgarLetra(Palabra[i], true);
+        i++;
+        }while(i < Palabra.Length && Juego.adivino);
+        if(!Juego.adivino)
+        {
+           Juego.perdiste = true;
+           ViewBag.perdiste = Juego.perdiste;
+        }
+        if(Juego.ganaste)
+        {
+            return RedirectToAction("Gano");
+        }
+        else if(Juego.perdiste)
+        {
+            return RedirectToAction("Perdio");
+        }
         return View("Ahorcado");
     }
 }

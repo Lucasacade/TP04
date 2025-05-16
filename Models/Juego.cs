@@ -8,6 +8,7 @@ class Juego
     public static bool finalizado{get; set;}
     public static bool ganaste{get; set;}
     public static bool perdiste{get; set;}
+    public static bool adivino{get; set;}
 
     public static void CargarPalabras()
     {
@@ -130,12 +131,12 @@ palabras[99] = "FUTBOL";
         ganaste = false;
         perdiste = false;
     }
-    public static void ArriesgarLetra(char letraArriesgada)
+    public static void ArriesgarLetra(char letraArriesgada, bool palabra)
     {
         if (letrasUsadas.Contains(letraArriesgada)) return;
         letrasUsadas.Add(letraArriesgada);
         intentos++;
-        bool adivino = false;
+        adivino = false;
         for (int i = 0; i < palabraAdivinar.Length; i++)
         {
             if (palabraAdivinar[i] == letraArriesgada)
@@ -144,7 +145,7 @@ palabras[99] = "FUTBOL";
                adivino = true;
             }
         }
-        if(!adivino)
+        if(!adivino && !palabra)
         {
             intentos++;
         }
