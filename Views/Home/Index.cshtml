@@ -2,21 +2,35 @@
     ViewData["Title"] = "HomeAhorcado";
 }
 <body>
+
 <header>
-<p> Ahorcado <a href = '@Url.Action("ElegirPalabra", "Home")'></p> <p><a href = '@Url.Action("Index", "Home")'> Home </a> </p>
+
+<nav>
+<p><a href = '@Url.Action("ElegirPalabra", "Home")'>Ahorcado</p> 
+</nav>
+<nav>
+<p><a href = '@Url.Action("Index", "Home")'> Home </a> </p>
+</nav>
+
+<img src="/img/FELUTO.png" alt="FELUTO" />
 </header>
+
 <main>
+
 <section>
 <h1>¡Bienvenido!</h1>
-<p>HomeAhorcado es el juego donde usted tiene que descubrir una palabra arriesgando letras para ver si están en la palabra</p>
+<p>Ahorcado es el juego donde usted tiene que descubrir una palabra arriesgando letras para ver si están en la palabra</p>
 <p>La idea es que se haga en pocos intentos. Tenés que adivinar antes de que la persona se ahorque.</p>
 <p>Por cada vez que arriesgues letra o palabra y no sea correcta, se dibujará una parte de la persona.</p>
 <img src = "img\PASOSAHORCADO.webp" alt = "Foto de pasos del Ahorcado" >
 <h3>En el siguiente intento fallido, la persona se ahorcará y perderás el juego.</h3>
+
 <div>
 <p>Para empezar a jugar, presione <a href = '@Url.Action("ElegirPalabra", "Home")'> Acá </a> </p>
 </div>
+
 </section>
+
 </main>
 <footer>2025 - Ahorcado - Federico Ajami, Lucas Dorin y Tobías Nul - FeLuTo</footer>
 </body>

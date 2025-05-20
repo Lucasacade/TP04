@@ -3,34 +3,42 @@
 }
 <body>
 <header>
-<p> Ahorcado </p> <p><a href = '@Url.Action("Index", "Home")'> Home </a> </p>
+<nav>
+<p><a href = '@Url.Action("ElegirPalabra", "Home")'>Ahorcado</p>
+</nav>
+<nav>
+<p><a href = '@Url.Action("Index", "Home")'> Home </a> </p>
+</nav>
+<img src="/img/FELUTO.png" alt="FELUTO" />
 </header>
-
-    <h2>PALABRA: @ViewBag.palabraMostrar</h2>
-    <form action='@Url.Action("ArriesgarLetra", "Home")'>
-    <label for="letraArriesgada">Arriesgar Letra</label><br>
-    <input type="char" name="letraArriesgada" maxlength="1"/>
-    <input type="submit" value="Enviar letra"/> 
-    <p>Letras Utilizadas: @ViewBag.letrasUsadas</p>
-    <img src="\img\INTENTOS\INTENTOS 0" alt= "Foto de pasos de ahorcado">
-
-    <br> <br>
+<main>
+  <div>
+    @foreach(char m in ViewBag.palabraMostrar)
+    {
+        <h1 style="display: inline; margin-right:5px;">@m.ToString().ToUpper()</h1>
+    }
+    </div>
+    <div>
+    <p>Letras utilizadas:</p>
+    @if(ViewBag.letrasUsadas!=null)
+    {
+    foreach(char j in ViewBag.letrasUsadas)
+    {
+        <p style="display: inline; margin-right:5px;">@j.ToString().ToUpper()</p>
+    }
+    }
+        <p>Intentos:</strong>@ViewBag.intentos</p>
+</div>
+    <form action='@Url.Action("ArriesgarLetra","Home")' method="POST" enctype="multipart/form-data">
+    <input type="text" name="letra" maxlength="1" placeholder="Ingrese la letra" required><br>
+     <input type="submit" value="Enviar form">
     </form>
-    <form action='@Url.Action("ArriesgarPalabra", "Home")'>
-    <label for="palabraArriesgada">Arriesgar Palabra</label><br>
-    <input type="text" name="palabraArriesgada" maxlength="ViewBag.cantLetrasPalabra"/>
-    <input type="submit" value="Enviar palabra"/>
-</form>
-
-@if (@ViewBag.intentos == 6)
-{
-    <p>Te quedaste sin intentos, estás obligado a arriesgar</p>
-    <form action='@Url.Action("ArriesgarPalabra", "Home")'>
-    <label for="palabraArriesgada">Arriesgar Palabra</label><br>
-    <input type="text" name="palabraArriesgada" maxlength="ViewBag.cantLetrasPalabra"/>
-    <input type="submit" value="Enviar palabra"/>
-</form>
-}
-
+     <form action='@Url.Action("ArriesgarPalabra","Home")'>
+    <input type="text" name="palabra" placeholder="Ingrese la palabra" required><br>
+     <input type="submit" value="Enviar form" required  maxlength= @ViewBag.palabraAdivinar.Length>
+    </form>
+    <img src="/img/INTENTOS/@ViewBag.FOTOAHORCADO" alt="FOTOAHROCADO" />
+    </main>
+    @ViewBag.palabraAdivinar
 <footer>2025 - Ahorcado - Federico Ajami, Lucas Dorin y Tobías Nul - FeLuTo</footer>
 </body>

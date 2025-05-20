@@ -19,48 +19,88 @@ public class HomeController : Controller
     }
     public IActionResult ElegirPalabra()
     {
-        Juego.CargarPalabras();
+        Juego.IniciarJuego();
         ViewBag.palabraMostrar = Juego.palabraMostrar;
         ViewBag.letrasUsadas = Juego.letrasUsadas;
         ViewBag.intentos = Juego.intentos;
-        ViewBag.finalizado = Juego.finalizado;
+        ViewBag.palabraAdivinar= Juego.palabraAdivinar;
+        switch(Juego.intentos)
+        {
+            case 0:
+            ViewBag.FOTOAHORCADO = "INTENTOS0.png";
+            break;
+            case 1:
+            ViewBag.FOTOAHORCADO = "INTENTOS1.png";
+            break;
+            case 2:
+            ViewBag.FOTOAHORCADO = "INTENTOS2.png";
+            break;
+            case 3:
+            ViewBag.FOTOAHORCADO = "INTENTOS3.png";
+            break;
+            case 4:
+            ViewBag.FOTOAHORCADO = "INTENTOS4.png";
+            break;
+            case 5:
+            ViewBag.FOTOAHORCADO = "INTENTOS5.png";
+            break;
+            default:
+            ViewBag.FOTOAHORCADO = "INTENTOS6.png";
+            break;
+        }
         return View("Ahorcado");
     }
     public IActionResult ArriesgarLetra(char letra)
     {
-        ViewBag.cantLetrasPalabra = Juego.palabraAdivinar.Length;
-        Juego.ArriesgarLetra(letra, false);
-        if(Juego.ganaste)
+
+        Juego.ArriesgarLetra(letra);
+        ViewBag.palabraMostrar = Juego.palabraMostrar;
+        ViewBag.letrasUsadas = Juego.letrasUsadas;
+        ViewBag.intentos = Juego.intentos;
+        ViewBag.palabraAdivinar= Juego.palabraAdivinar;
+        switch(Juego.intentos)
         {
-            return RedirectToAction("Gano");
+            case 0:
+            ViewBag.FOTOAHORCADO = "INTENTOS0.png";
+            break;
+            case 1:
+            ViewBag.FOTOAHORCADO = "INTENTOS1.png";
+            break;
+            case 2:
+            ViewBag.FOTOAHORCADO = "INTENTOS2.png";
+            break;
+            case 3:
+            ViewBag.FOTOAHORCADO = "INTENTOS3.png";
+            break;
+            case 4:
+            ViewBag.FOTOAHORCADO = "INTENTOS4.png";
+            break;
+            case 5:
+            ViewBag.FOTOAHORCADO = "INTENTOS5.png";
+            break;
+            default:
+            ViewBag.FOTOAHORCADO = "INTENTOS6.png";
+            break;
         }
-        else if(Juego.perdiste)
-        {
-            return RedirectToAction("Perdio");
-        }
+        if(Juego.palabraMostrar == Juego.palabraAdivinar)
+       {
+            return View("Gano");
+       }
+       if(Juego.intentos==7)
+       {
+           return View("Perdio");
+       }
         return View("Ahorcado");
     }
-    public IActionResult ArriesgarPalabra(string Palabra)
+    public IActionResult ArriesgarPalabra(string palabra)
     {
-        int i = 0;
-        do
+        if (Juego.ArriesgarPalabra(palabra))
         {
-        Juego.ArriesgarLetra(Palabra[i], true);
-        i++;
-        }while(i < Palabra.Length && Juego.adivino);
-        if(!Juego.adivino)
-        {
-           Juego.perdiste = true;
-           ViewBag.perdiste = Juego.perdiste;
+            return View("Gano");
         }
-        if(Juego.ganaste)
+        else
         {
-            return RedirectToAction("Gano");
+            return View("Perdio");
         }
-        else if(Juego.perdiste)
-        {
-            return RedirectToAction("Perdio");
-        }
-        return View("Ahorcado");
     }
 }
